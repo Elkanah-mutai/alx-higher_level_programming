@@ -6,7 +6,7 @@ def new_in_list(my_list, idx, element):
     if idx < 0:
         return cp
     elif idx >= len(my_list):
-        return  
+        return
     else:
         cp[idx] = element
         return cp
