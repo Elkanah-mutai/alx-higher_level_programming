@@ -1,12 +1,42 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    table = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-
-    if not isinstance(roman_string, str) or roman_string is None:
+    if roman_string is None or not isinstance(roman_string, str):
         return 0
-    prev, sum = 0, 0
-
-    for c in roman_string:
-        sum += table[c] if table[c] <= prev else table[c] - prev * 
-        prev = table[c]
-    return sum
+    r_nums = {
+            'MMM': 3000,
+            'MM': 2000,
+            'M': 1000,
+            'DCCC': 800,
+            'DCC': 700,
+            'DC': 600,
+            'CCC': 300,
+            'CC': 200,
+            'CD': 400,
+            'D': 500,
+            'CM': 900,
+            'LXXX': 80,
+            'LXX': 70,
+            'LX': 60,
+            'XXX': 30,
+            'XX': 20,
+            'XL': 40,
+            'L': 50,
+            'XC': 90,
+            'C': 100,
+            'VIII': 8,
+            'VII': 7,
+            'III': 3,
+            'II': 2,
+            'VI': 6,
+            'IV': 4,
+            'V': 5,
+            'IX': 9,
+            'X': 10,
+            'I': 1,
+            }
+    result = 0
+    for key in r_nums.keys():
+        if key in roman_string:
+            result += r_nums[key]
+            roman_string = roman_string.replace(key, '')
+    return result
